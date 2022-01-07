@@ -14,8 +14,19 @@ const initialState = {
     ],
 };
   
-const reducer = (state = initialState) => {
-    return state;
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'INCREASE_COUNT':
+      return {
+        count: state.count + 1,
+      };
+    case 'DECREASE_COUNT':
+      return {
+        count: state.count - 1,
+      };
+    default:
+      return state;
+  }
 };
 
 const countReducer = (
@@ -48,6 +59,6 @@ const countReducer = (
     postsReducer,
   });
 
-const myStore = createStore(rootReducer);
+const myStore = createStore(reducer);
 
 export default myStore;
