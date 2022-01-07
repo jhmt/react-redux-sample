@@ -2,16 +2,7 @@ import { createStore, combineReducers } from "redux";
 
 const initialState = {
     count: 50,
-    posts: [
-        {
-            id: 1,
-            title: "About Redux"
-        },
-        {
-            id: 2,
-            title: "Redux Hooks"
-        },
-    ],
+    posts: [],
 };
   
 const reducer = (state = initialState, action) => {
@@ -23,6 +14,10 @@ const reducer = (state = initialState, action) => {
     case 'DECREASE_COUNT':
       return {
         count: state.count - 1,
+      };
+    case 'GET_POST_DATA':
+      return {
+        ...state, posts: action.payload
       };
     default:
       return state;
